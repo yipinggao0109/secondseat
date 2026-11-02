@@ -66,6 +66,7 @@ const HOLD_SHORT_PROMPT = 'Hold short. Run-up, or ready for takeoff?';
 
 let activeVoiceAudio: HTMLAudioElement | null = null;
 let cancelActiveRecognition: (() => void) | null = null;
+let useBrowserVoice = false;
 const generatedVoiceAssets = new Map<string, string>();
 const VOICE_ASSET_STORAGE_KEY = 'secondseat.kokoro-assets.v2';
 function currentGeneratedAsset(asset: string) {
@@ -108,6 +109,11 @@ function voiceAssetFor(text: string) {
   return generatedVoiceAssets.get(text.toLowerCase()) ?? null;
 }
 
+function isHostedPrototype() {
+  if (typeof window === 'undefined') return false;
+  return !['localhost', '127.0.0.1'].includes(window.location.hostname);
+}
+
 function stopSpeech() {
   if (typeof window === 'undefined') return;
   if (activeVoiceAudio) {
@@ -127,6 +133,20 @@ function speak(text: string, onEnd?: () => void) {
   if (typeof window === 'undefined') return;
   stopListening();
   stopSpeech();
+  if (useBrowserVoice) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis?.getVoices() ?? [];
+    utterance.voice = voices.find((voice) => voice.lang === 'en-US' && /samantha|ava|allison|google us english/i.test(voice.name))
+      ?? voices.find((voice) => voice.lang === 'en-US')
+      ?? null;
+    utterance.lang = 'en-US';
+    utterance.rate = 0.94;
+    utterance.pitch = 0.96;
+    utterance.onend = () => onEnd?.();
+    utterance.onerror = () => onEnd?.();
+    window.speechSynthesis?.speak(utterance);
+    return;
+  }
   const asset = voiceAssetFor(text);
   if (!asset) {
     console.error(`[SecondSeat voice] Missing Kokoro audio: ${text}`);
@@ -208,6 +228,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (isHostedPrototype()) return;
     const controller = new AbortController();
     void fetch('http://127.0.0.1:8787/checklists', { signal: controller.signal })
       .then(async (response) => {
@@ -336,6 +357,7 @@ export default function Home() {
   }, []);
 
   function loadDemo() {
+    useBrowserVoice = isHostedPrototype();
     setExtracting(true);
     window.setTimeout(() => {
       const selected = R182_CHECKLISTS.filter((section) => !section.appliesTo || nightMode);
@@ -524,6 +546,12 @@ export default function Home() {
   }
 
   async function prepareVoiceAndStartFlight() {
+    if (isHostedPrototype()) {
+      useBrowserVoice = true;
+      setVoiceError('');
+      startFlight();
+      return;
+    }
     const allPrompts = Array.from(new Set([
       HOLD_SHORT_PROMPT,
       ...checklist.flatMap((section) => [
@@ -823,7 +851,7 @@ export default function Home() {
               <Button onClick={loadDemo} disabled={extracting} className="h-12 rounded-xl bg-[#b8ff58] px-5 text-sm font-semibold text-[#07100e] hover:bg-[#c7ff7c]">
                 {extracting ? <><Sparkles className="animate-pulse" /> Loading demo checklist…</> : <><FileImage /> Use R182 Skylane RG <ArrowRight /></>}
               </Button>
-              <Button onClick={() => { setImportError(''); setStage('import'); }} variant="outline" className="h-12 rounded-xl border-white/12 bg-white/4 px-5 text-[#a8bbb6] hover:bg-white/8 hover:text-white"><Upload className="size-4" /> Upload images</Button>
+              <Button disabled variant="outline" title="Coming soon" className="h-12 rounded-xl border-white/12 bg-white/4 px-5 text-[#6f837e]"><Upload className="size-4" /> Upload images · Coming soon</Button>
             </div>
             {(savedProfiles.length > 0 || registryMessage) && <div className="mt-5 max-w-xl rounded-xl border border-cyan-300/15 bg-cyan-300/5 p-4"><p className="text-[10px] font-semibold tracking-[0.16em] text-cyan-100">SAVED CHECKLISTS</p>{savedProfiles.length > 0 && <div className="mt-3 flex flex-wrap gap-2">{savedProfiles.map((profile) => <div key={profile.aircraft.id} className="flex overflow-hidden rounded-lg border border-cyan-300/15 bg-[#07100f]"><Button type="button" variant="ghost" onClick={() => loadSavedProfile(profile)} className="h-10 rounded-none border-0 text-[#a8bbb6] hover:bg-cyan-300/10 hover:text-white"><FileImage /> {profile.aircraft.displayName}</Button><Button type="button" variant="ghost" disabled={deletingProfileId === profile.aircraft.id} onClick={() => void deleteSavedProfile(profile)} aria-label={`Delete ${profile.aircraft.displayName}`} title={`Delete ${profile.aircraft.displayName}`} className="h-10 w-10 rounded-none border-l border-cyan-300/15 px-0 text-[#6f837e] hover:bg-red-400/10 hover:text-red-200">{deletingProfileId === profile.aircraft.id ? <Sparkles className="size-4 animate-pulse" /> : <Trash2 className="size-4" />}</Button></div>)}</div>}{registryMessage && <p role="status" className="mt-3 text-xs text-[#8ea29e]">{registryMessage}</p>}</div>}
             <label htmlFor="night-mode" className="mt-5 flex w-fit cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-white/[.035] px-4 py-3 text-sm text-[#a8bbb6]">
