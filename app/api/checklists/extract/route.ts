@@ -156,11 +156,11 @@ function responseOutputText(response: Record<string, unknown>) {
 }
 
 export async function POST(request: Request) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return Response.json({ error: 'OpenAI extraction is ready, but OPENAI_API_KEY is not configured yet.' }, { status: 503 });
-
   try {
     const formData = await request.formData();
+    const suppliedApiKey = formData.get('apiKey');
+    const apiKey = (typeof suppliedApiKey === 'string' ? suppliedApiKey.trim() : '') || process.env.OPENAI_API_KEY;
+    if (!apiKey) return Response.json({ error: 'Enter an OpenAI API key to extract this checklist.' }, { status: 400 });
     const displayNameValue = formData.get('displayName');
     const displayName = typeof displayNameValue === 'string' ? displayNameValue.trim() : '';
     const images = formData.getAll('images').filter((value): value is File => value instanceof File);

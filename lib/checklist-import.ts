@@ -7,9 +7,10 @@ export type ChecklistExtractionResult = {
   reviewRequired: true;
 };
 
-export async function extractChecklistImages(displayName: string, images: File[]): Promise<ChecklistExtractionResult> {
+export async function extractChecklistImages(displayName: string, images: File[], apiKey?: string): Promise<ChecklistExtractionResult> {
   const formData = new FormData();
   formData.set('displayName', displayName);
+  if (apiKey?.trim()) formData.set('apiKey', apiKey.trim());
   for (const image of images) formData.append('images', image);
 
   const response = await fetch('/api/checklists/extract', { method: 'POST', body: formData });

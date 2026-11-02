@@ -184,6 +184,7 @@ export default function Home() {
   const [sourceLabel, setSourceLabel] = useState('1981 R182 POH reference');
   const [sourceUrl, setSourceUrl] = useState<string | null>(R182_SOURCE_URL);
   const [importName, setImportName] = useState('');
+  const [importApiKey, setImportApiKey] = useState('');
   const [importFiles, setImportFiles] = useState<File[]>([]);
   const [importing, setImporting] = useState(false);
   const [importError, setImportError] = useState('');
@@ -466,11 +467,16 @@ export default function Home() {
       setImportError('Add at least one checklist image.');
       return;
     }
+    if (isHostedPrototype() && !importApiKey.trim()) {
+      setImportError('Enter your OpenAI API key for this extraction request.');
+      return;
+    }
 
     setImporting(true);
     setImportError('');
     try {
-      const result = await extractChecklistImages(displayName, importFiles);
+      const result = await extractChecklistImages(displayName, importFiles, importApiKey);
+      setImportApiKey('');
       setChecklist(result.profile.checklists.map((section) => ({
         ...section,
         items: section.items.map((item) => ({ ...item })),
@@ -514,6 +520,18 @@ export default function Home() {
         items: section.items.map(({ status: _status, response: _response, ...item }) => item),
       }));
       const profile = loadAircraftProfile({ ...importedProfile, checklists: cleanChecklists });
+      if (isHostedPrototype()) {
+        const blob = new Blob([JSON.stringify(profile, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${profile.aircraft.id || 'secondseat-checklist'}.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+        setImportedProfile(profile);
+        setSaveMessage('Checklist JSON downloaded to this device.');
+        return;
+      }
       const response = await fetch('http://127.0.0.1:8787/save-checklist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -851,7 +869,7 @@ export default function Home() {
               <Button onClick={loadDemo} disabled={extracting} className="h-12 rounded-xl bg-[#b8ff58] px-5 text-sm font-semibold text-[#07100e] hover:bg-[#c7ff7c]">
                 {extracting ? <><Sparkles className="animate-pulse" /> Loading demo checklist…</> : <><FileImage /> Use R182 Skylane RG <ArrowRight /></>}
               </Button>
-              <Button disabled variant="outline" title="Coming soon" className="h-12 rounded-xl border-white/12 bg-white/4 px-5 text-[#6f837e]"><Upload className="size-4" /> Upload images · Coming soon</Button>
+              <Button onClick={() => { setImportError(''); setStage('import'); }} variant="outline" className="h-12 rounded-xl border-white/12 bg-white/4 px-5 text-[#a8bbb6] hover:bg-white/8 hover:text-white"><Upload className="size-4" /> Upload images</Button>
             </div>
             {(savedProfiles.length > 0 || registryMessage) && <div className="mt-5 max-w-xl rounded-xl border border-cyan-300/15 bg-cyan-300/5 p-4"><p className="text-[10px] font-semibold tracking-[0.16em] text-cyan-100">SAVED CHECKLISTS</p>{savedProfiles.length > 0 && <div className="mt-3 flex flex-wrap gap-2">{savedProfiles.map((profile) => <div key={profile.aircraft.id} className="flex overflow-hidden rounded-lg border border-cyan-300/15 bg-[#07100f]"><Button type="button" variant="ghost" onClick={() => loadSavedProfile(profile)} className="h-10 rounded-none border-0 text-[#a8bbb6] hover:bg-cyan-300/10 hover:text-white"><FileImage /> {profile.aircraft.displayName}</Button><Button type="button" variant="ghost" disabled={deletingProfileId === profile.aircraft.id} onClick={() => void deleteSavedProfile(profile)} aria-label={`Delete ${profile.aircraft.displayName}`} title={`Delete ${profile.aircraft.displayName}`} className="h-10 w-10 rounded-none border-l border-cyan-300/15 px-0 text-[#6f837e] hover:bg-red-400/10 hover:text-red-200">{deletingProfileId === profile.aircraft.id ? <Sparkles className="size-4 animate-pulse" /> : <Trash2 className="size-4" />}</Button></div>)}</div>}{registryMessage && <p role="status" className="mt-3 text-xs text-[#8ea29e]">{registryMessage}</p>}</div>}
             <label htmlFor="night-mode" className="mt-5 flex w-fit cursor-pointer items-center gap-3 rounded-xl border border-white/10 bg-white/[.035] px-4 py-3 text-sm text-[#a8bbb6]">
@@ -885,6 +903,10 @@ export default function Home() {
             <div>
               <label htmlFor="import-name" className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8ea29e]">Aircraft or checklist name</label>
               <Input id="import-name" value={importName} onChange={(event) => setImportName(event.target.value)} placeholder="e.g. N12345 · Cessna R182" className="mt-2 h-12 border-white/10 bg-[#0c1715] text-white placeholder:text-[#58706a]" />
+
+              <label htmlFor="openai-api-key" className="mt-5 block text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8ea29e]">OpenAI API key · used once, not saved</label>
+              <Input id="openai-api-key" type="password" autoComplete="off" value={importApiKey} onChange={(event) => setImportApiKey(event.target.value)} placeholder="sk-…" className="mt-2 h-12 border-white/10 bg-[#0c1715] font-mono text-white placeholder:text-[#58706a]" />
+              <p className="mt-2 text-[11px] leading-5 text-amber-100/70">The key is sent to this demo's server only for the current extraction. Use a limited project key and revoke it after testing.</p>
 
               <label htmlFor="checklist-images" aria-label="Choose checklist images" className="mt-5 grid min-h-56 cursor-pointer place-items-center rounded-2xl border border-dashed border-white/15 bg-[#0c1715] p-8 text-center transition hover:border-[#b8ff58]/35 hover:bg-[#0f1c19]">
                 <span>
@@ -946,7 +968,7 @@ export default function Home() {
           <div className="mt-7 rounded-2xl border border-amber-300/15 bg-amber-300/5 p-5"><div className="flex items-start gap-3 text-sm leading-6 text-[#c8d4d1]"><Checkbox id="pilot-review" checked={reviewed} onCheckedChange={(value) => setReviewed(Boolean(value))} className="mt-1 border-white/20 data-checked:border-[#b8ff58] data-checked:bg-[#b8ff58] data-checked:text-[#07100f]" /><label htmlFor="pilot-review" className="cursor-pointer"><strong className="font-medium text-white">I reviewed this checklist against its source.</strong><br /><span className="text-[#8ea29e]">SecondSeat records verbal confirmation only; it cannot verify the aircraft’s physical configuration.</span></label></div></div>
           {voiceError && <div role="alert" className="mt-5 rounded-xl border border-red-300/20 bg-red-300/6 px-4 py-3 text-xs leading-5 text-red-100"><strong className="font-medium">Kokoro could not finish:</strong> {voiceError}</div>}
           {saveMessage && <output className="mt-4 block text-sm text-cyan-100">{saveMessage}</output>}
-          <div className="mt-6 flex flex-col-reverse justify-between gap-3 sm:flex-row"><Button variant="ghost" className="h-11 px-4 text-[#8ea29e] hover:bg-white/5 hover:text-white" onClick={() => setStage(importReviewNote ? 'import' : 'upload')}><ChevronLeft /> Back</Button><div className="flex flex-col gap-2 sm:flex-row">{importedProfile && <Button variant="outline" disabled={!reviewed || savingChecklist} onClick={saveImportedChecklist} className="h-11 border-white/10 bg-transparent text-cyan-100 hover:bg-cyan-300/10 hover:text-white">{savingChecklist ? <><Sparkles className="animate-pulse" /> Saving…</> : <><FileImage /> Save JSON</>}</Button>}<Button disabled={!reviewed || voicePreparing} onClick={prepareVoiceAndStartFlight} className="h-11 bg-[#b8ff58] px-5 text-[#07100f] hover:bg-[#c7ff7c]">{voicePreparing ? <><Sparkles className="animate-pulse" /> Generating Kokoro voice for {aircraftName}…</> : <><ShieldCheck /> Confirm, generate voice & start <ArrowRight /></>}</Button></div></div>
+          <div className="mt-6 flex flex-col-reverse justify-between gap-3 sm:flex-row"><Button variant="ghost" className="h-11 px-4 text-[#8ea29e] hover:bg-white/5 hover:text-white" onClick={() => setStage(importReviewNote ? 'import' : 'upload')}><ChevronLeft /> Back</Button><div className="flex flex-col gap-2 sm:flex-row">{importedProfile && <Button variant="outline" disabled={!reviewed || savingChecklist} onClick={saveImportedChecklist} className="h-11 border-white/10 bg-transparent text-cyan-100 hover:bg-cyan-300/10 hover:text-white">{savingChecklist ? <><Sparkles className="animate-pulse" /> Saving…</> : <><FileImage /> Save JSON</>}</Button>}<Button disabled={!reviewed || voicePreparing} onClick={prepareVoiceAndStartFlight} className="h-11 bg-[#b8ff58] px-5 text-[#07100f] hover:bg-[#c7ff7c]">{voicePreparing ? <><Sparkles className="animate-pulse" /> Preparing voice…</> : <><ShieldCheck /> Confirm & start <ArrowRight /></>}</Button></div></div>
         </section>
       )}
 
