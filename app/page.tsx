@@ -64,25 +64,6 @@ const HOLD_SHORT_START = HOLD_SHORT_SEGMENT?.startSecond ?? 420;
 const TAKEOFF_START = HOLD_SHORT_SEGMENT?.endSecond ?? 720;
 const HOLD_SHORT_PROMPT = 'Hold short. Run-up, or ready for takeoff?';
 
-const NATURAL_VOICE_PROMPTS = new Set([
-  HOLD_SHORT_PROMPT.toLowerCase(),
-  ...R182_CHECKLISTS.flatMap((section) => [
-    `${section.name.toLowerCase()} checklist complete.`,
-    ...(section.triggerPhase
-      ? [`${section.triggerPhase} detected. Start ${section.name} checklist? Say yes or tap confirm.`.toLowerCase()]
-      : []),
-    ...section.items.flatMap((item) => {
-      const challenge = item.challenge.toLowerCase();
-      return [
-        `${challenge}?`,
-        `${challenge}, confirmed.`,
-        `${challenge} not confirmed.`,
-        instructionFor(item).toLowerCase(),
-      ];
-    }),
-  ]),
-]);
-
 let activeVoiceAudio: HTMLAudioElement | null = null;
 let cancelActiveRecognition: (() => void) | null = null;
 const generatedVoiceAssets = new Map<string, string>();
@@ -124,13 +105,7 @@ function firstSliderValue(value: number | readonly number[]) {
 }
 
 function voiceAssetFor(text: string) {
-  const normalized = text.toLowerCase();
-  const generatedAsset = generatedVoiceAssets.get(normalized);
-  if (generatedAsset) return generatedAsset;
-  if (!NATURAL_VOICE_PROMPTS.has(normalized)) return null;
-  const questionSuffix = normalized.endsWith('?') ? '-question' : '';
-  const stem = normalized.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  return `/audio/kokoro/${stem}${questionSuffix}.wav`;
+  return generatedVoiceAssets.get(text.toLowerCase()) ?? null;
 }
 
 function stopSpeech() {
@@ -557,9 +532,7 @@ export default function Home() {
         ...section.items.map(instructionFor),
       ]),
     ]));
-    const prompts = allPrompts.filter((prompt) => importedProfile
-      ? !generatedVoiceAssets.has(prompt.toLowerCase())
-      : !voiceAssetFor(prompt));
+    const prompts = allPrompts.filter((prompt) => !generatedVoiceAssets.has(prompt.toLowerCase()));
 
     if (!prompts.length) {
       startFlight();

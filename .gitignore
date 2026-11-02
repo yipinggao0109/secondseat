@@ -36,6 +36,7 @@ yarn-error.log*
 !.env.example
 /.venv/
 /public/audio/generated/
+/public/audio/kokoro/
 
 # deployment and generated files
 .vercel
