@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://secondseat.local/schemas/aircraft-profile.schema.json",
+  "title": "SecondSeat aircraft checklist profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "aircraft", "source", "modes", "checklists"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "aircraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "manufacturer", "model", "displayName", "configuration"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "manufacturer": { "type": "string", "minLength": 1 },
+        "model": { "type": "string", "minLength": 1 },
+        "displayName": { "type": "string", "minLength": 1 },
+        "year": { "type": "integer" },
+        "configuration": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "title"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string" },
+        "url": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "modes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "description"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "phaseDetection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fieldElevationFt", "taxiSpeedKt", "airborneSpeedKt", "climbRateFpm", "descentRateFpm", "cruiseVerticalBandFpm", "approachAglFt", "groundBandFt"],
+      "properties": {
+        "fieldElevationFt": { "type": "number" },
+        "taxiSpeedKt": { "type": "number", "minimum": 0 },
+        "airborneSpeedKt": { "type": "number", "minimum": 0 },
+        "climbRateFpm": { "type": "number", "minimum": 0 },
+        "descentRateFpm": { "type": "number", "maximum": 0 },
+        "cruiseVerticalBandFpm": { "type": "number", "minimum": 0 },
+        "approachAglFt": { "type": "number", "minimum": 0 },
+        "groundBandFt": { "type": "number", "minimum": 0 }
+      }
+    },
+    "checklists": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "category", "group", "sourcePage", "items"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "category": { "enum": ["normal", "emergency"] },
+          "group": { "type": "string", "minLength": 1 },
+          "sourcePage": { "type": "string", "minLength": 1 },
+          "sourceKind": { "enum": ["poh-checklist", "poh-amplified", "prototype-supplement"] },
+          "appliesTo": { "enum": ["night"] },
+          "triggerPhase": { "type": "string" },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "challenge", "expected", "validator"],
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "challenge": { "type": "string", "minLength": 1 },
+                "expected": { "type": "string" },
+                "validator": { "enum": ["exact", "range"] },
+                "min": { "type": "number" },
+                "max": { "type": "number" }
+              },
+              "allOf": [
+                {
+                  "if": { "properties": { "validator": { "const": "range" } } },
+                  "then": { "required": ["min", "max"] }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

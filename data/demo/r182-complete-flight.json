@@ -1,0 +1,96 @@
+{
+  "id": "r182-kpwk-local-demo",
+  "label": "R182 complete local flight",
+  "durationSeconds": 2820,
+  "playbackStepSeconds": 5,
+  "segments": [
+    {
+      "id": "parked-out",
+      "label": "Preflight / parked",
+      "startSecond": 0,
+      "endSecond": 180,
+      "start": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 0, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 0, "verticalSpeedFpm": 0, "trackDegrees": 160 }
+    },
+    {
+      "id": "taxi-out",
+      "label": "Taxi out",
+      "startSecond": 180,
+      "endSecond": 420,
+      "start": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 0, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1128, "longitude": -87.9006, "altitudeFt": 622, "groundSpeedKt": 8, "verticalSpeedFpm": 0, "trackDegrees": 160 }
+    },
+    {
+      "id": "hold-short",
+      "label": "Hold short / run-up",
+      "startSecond": 420,
+      "endSecond": 720,
+      "start": { "latitude": 42.1128, "longitude": -87.9006, "altitudeFt": 622, "groundSpeedKt": 3, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1128, "longitude": -87.9006, "altitudeFt": 622, "groundSpeedKt": 3, "verticalSpeedFpm": 0, "trackDegrees": 160 }
+    },
+    {
+      "id": "takeoff",
+      "label": "Takeoff roll / liftoff",
+      "startSecond": 720,
+      "endSecond": 780,
+      "start": { "latitude": 42.1128, "longitude": -87.9006, "altitudeFt": 622, "groundSpeedKt": 8, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1050, "longitude": -87.8950, "altitudeFt": 680, "groundSpeedKt": 82, "verticalSpeedFpm": 700, "trackDegrees": 160 }
+    },
+    {
+      "id": "climb",
+      "label": "Enroute climb",
+      "startSecond": 780,
+      "endSecond": 1200,
+      "start": { "latitude": 42.1050, "longitude": -87.8950, "altitudeFt": 680, "groundSpeedKt": 82, "verticalSpeedFpm": 700, "trackDegrees": 160 },
+      "end": { "latitude": 41.9900, "longitude": -87.8100, "altitudeFt": 4500, "groundSpeedKt": 118, "verticalSpeedFpm": 120, "trackDegrees": 160 }
+    },
+    {
+      "id": "cruise",
+      "label": "Cruise",
+      "startSecond": 1200,
+      "endSecond": 1980,
+      "start": { "latitude": 41.9900, "longitude": -87.8100, "altitudeFt": 4500, "groundSpeedKt": 118, "verticalSpeedFpm": 40, "trackDegrees": 160 },
+      "end": { "latitude": 41.9400, "longitude": -87.7600, "altitudeFt": 4510, "groundSpeedKt": 126, "verticalSpeedFpm": 0, "trackDegrees": 340 }
+    },
+    {
+      "id": "descent",
+      "label": "Descent",
+      "startSecond": 1980,
+      "endSecond": 2340,
+      "start": { "latitude": 41.9400, "longitude": -87.7600, "altitudeFt": 4510, "groundSpeedKt": 126, "verticalSpeedFpm": -450, "trackDegrees": 340 },
+      "end": { "latitude": 42.0600, "longitude": -87.8550, "altitudeFt": 2200, "groundSpeedKt": 108, "verticalSpeedFpm": -500, "trackDegrees": 340 }
+    },
+    {
+      "id": "approach",
+      "label": "Approach",
+      "startSecond": 2340,
+      "endSecond": 2550,
+      "start": { "latitude": 42.0600, "longitude": -87.8550, "altitudeFt": 2200, "groundSpeedKt": 108, "verticalSpeedFpm": -450, "trackDegrees": 340 },
+      "end": { "latitude": 42.1105, "longitude": -87.8987, "altitudeFt": 680, "groundSpeedKt": 72, "verticalSpeedFpm": -280, "trackDegrees": 340 }
+    },
+    {
+      "id": "landing",
+      "label": "Landing / rollout",
+      "startSecond": 2550,
+      "endSecond": 2610,
+      "start": { "latitude": 42.1105, "longitude": -87.8987, "altitudeFt": 680, "groundSpeedKt": 72, "verticalSpeedFpm": -280, "trackDegrees": 340 },
+      "end": { "latitude": 42.1136, "longitude": -87.9011, "altitudeFt": 622, "groundSpeedKt": 45, "verticalSpeedFpm": 0, "trackDegrees": 340 }
+    },
+    {
+      "id": "taxi-in",
+      "label": "Taxi in",
+      "startSecond": 2610,
+      "endSecond": 2760,
+      "start": { "latitude": 42.1136, "longitude": -87.9011, "altitudeFt": 622, "groundSpeedKt": 45, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 5, "verticalSpeedFpm": 0, "trackDegrees": 160 }
+    },
+    {
+      "id": "parked-in",
+      "label": "Parked / shutdown",
+      "startSecond": 2760,
+      "endSecond": 2820,
+      "start": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 5, "verticalSpeedFpm": 0, "trackDegrees": 160 },
+      "end": { "latitude": 42.1142, "longitude": -87.9015, "altitudeFt": 621, "groundSpeedKt": 0, "verticalSpeedFpm": 0, "trackDegrees": 160 }
+    }
+  ]
+}

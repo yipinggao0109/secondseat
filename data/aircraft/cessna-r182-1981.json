@@ -1,0 +1,2540 @@
+{
+  "schemaVersion": 1,
+  "aircraft": {
+    "id": "cessna-r182-1981",
+    "manufacturer": "Cessna",
+    "model": "R182",
+    "displayName": "1981 Cessna R182 Skylane RG",
+    "year": 1981,
+    "configuration": [
+      "retractable-landing-gear",
+      "constant-speed-propeller"
+    ]
+  },
+  "source": {
+    "kind": "poh-afm",
+    "title": "1981 Model R182 Pilot’s Operating Handbook and FAA Approved Airplane Flight Manual",
+    "revision": "Original 15 August 1980; Revision 1, 24 May 1982",
+    "url": "https://www.aeroelectric.com/Reference_Docs/Cessna/cessna-poh/C182RG_1981_POH_scanned.pdf",
+    "note": "Internet reference copy. Verify against the approved, current documents and installed equipment for the specific airplane."
+  },
+  "modes": [
+    {
+      "id": "night",
+      "label": "Night operations",
+      "description": "Adds lighting and flashlight prompts that require aircraft-specific pilot review."
+    }
+  ],
+  "phaseDetection": {
+    "fieldElevationFt": 620,
+    "taxiSpeedKt": 3,
+    "airborneSpeedKt": 40,
+    "climbRateFpm": 250,
+    "descentRateFpm": -250,
+    "cruiseVerticalBandFpm": 150,
+    "approachAglFt": 1500,
+    "groundBandFt": 45
+  },
+  "checklists": [
+    {
+      "id": "preflight-cabin",
+      "name": "PREFLIGHT · CABIN",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-5",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-cabin-1",
+          "challenge": "Pilot’s Operating Handbook",
+          "expected": "AVAILABLE IN THE AIRPLANE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-2",
+          "challenge": "Landing gear lever",
+          "expected": "DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-3",
+          "challenge": "Control wheel lock",
+          "expected": "REMOVE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-4",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-5",
+          "challenge": "Avionics power switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-6",
+          "challenge": "Master switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-7",
+          "challenge": "Fuel quantity indicators",
+          "expected": "CHECK QUANTITY",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-8",
+          "challenge": "Landing gear position indicator light",
+          "expected": "GREEN LIGHT ILLUMINATED",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-9",
+          "challenge": "Avionics cooling fan",
+          "expected": "CHECK AUDIBLY FOR OPERATION",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-10",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-11",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-12",
+          "challenge": "Static pressure alternate source valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-cabin-13",
+          "challenge": "Baggage door",
+          "expected": "CHECK SECURE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-empennage",
+      "name": "PREFLIGHT · EMPENNAGE",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-5",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-empennage-1",
+          "challenge": "Rudder gust lock",
+          "expected": "REMOVE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-empennage-2",
+          "challenge": "Tail tie-down",
+          "expected": "DISCONNECT",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-empennage-3",
+          "challenge": "Control surfaces",
+          "expected": "CHECK FREEDOM OF MOVEMENT AND SECURITY",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-right-trailing",
+      "name": "PREFLIGHT · RIGHT TRAILING EDGE",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-5",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-right-trailing-1",
+          "challenge": "Right aileron",
+          "expected": "CHECK FREEDOM OF MOVEMENT AND SECURITY",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-right-wing",
+      "name": "PREFLIGHT · RIGHT WING",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-5 to 4-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-right-wing-1",
+          "challenge": "Right wing tie-down",
+          "expected": "DISCONNECT",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-right-wing-2",
+          "challenge": "Right fuel tank vent opening",
+          "expected": "CHECK FOR STOPPAGE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-right-wing-3",
+          "challenge": "Right main wheel tire",
+          "expected": "CHECK PROPER INFLATION",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-right-wing-4",
+          "challenge": "Right fuel tank sump",
+          "expected": "DRAIN AND CHECK FUEL",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-right-wing-5",
+          "challenge": "Right fuel quantity",
+          "expected": "CHECK VISUALLY",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-right-wing-6",
+          "challenge": "Right fuel filler cap and vent",
+          "expected": "SECURE AND UNOBSTRUCTED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-nose",
+      "name": "PREFLIGHT · NOSE",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-nose-1",
+          "challenge": "Static source openings",
+          "expected": "CHECK FOR STOPPAGE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-2",
+          "challenge": "Propeller and spinner",
+          "expected": "CHECK NICKS SECURITY AND OIL LEAKS",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-3",
+          "challenge": "Landing lights",
+          "expected": "CHECK CONDITION AND CLEANLINESS",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-4",
+          "challenge": "Carburetor air inlet",
+          "expected": "CHECK FOR RESTRICTIONS",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-5",
+          "challenge": "Nose wheel strut and tire",
+          "expected": "CHECK PROPER INFLATION",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-6",
+          "challenge": "Nose tie-down",
+          "expected": "DISCONNECT",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-7",
+          "challenge": "Engine oil level",
+          "expected": "CHECK FIVE QUARTS MINIMUM",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-nose-8",
+          "challenge": "Fuel strainer",
+          "expected": "DRAIN AND CHECK CLOSED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-left-wing",
+      "name": "PREFLIGHT · LEFT WING",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-left-wing-1",
+          "challenge": "Left main wheel tire",
+          "expected": "CHECK PROPER INFLATION",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-wing-2",
+          "challenge": "Left fuel tank sump",
+          "expected": "DRAIN AND CHECK FUEL",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-wing-3",
+          "challenge": "Left fuel quantity",
+          "expected": "CHECK VISUALLY",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-wing-4",
+          "challenge": "Left fuel filler cap and vent",
+          "expected": "SECURE AND UNOBSTRUCTED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-left-leading",
+      "name": "PREFLIGHT · LEFT LEADING EDGE",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-left-leading-1",
+          "challenge": "Pitot tube cover and opening",
+          "expected": "REMOVE AND CHECK OPEN",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-leading-2",
+          "challenge": "Left fuel tank vent opening",
+          "expected": "CHECK FOR STOPPAGE",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-leading-3",
+          "challenge": "Stall warning vane",
+          "expected": "CHECK FREEDOM AND HORN",
+          "validator": "exact"
+        },
+        {
+          "id": "preflight-left-leading-4",
+          "challenge": "Left wing tie-down",
+          "expected": "DISCONNECT",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "preflight-left-trailing",
+      "name": "PREFLIGHT · LEFT TRAILING EDGE",
+      "category": "normal",
+      "group": "Preflight inspection",
+      "sourcePage": "4-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "preflight-left-trailing-1",
+          "challenge": "Left aileron",
+          "expected": "CHECK FREEDOM OF MOVEMENT AND SECURITY",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "before-start",
+      "name": "BEFORE STARTING ENGINE",
+      "category": "normal",
+      "group": "Ground operations",
+      "sourcePage": "4-7",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "before-start-1",
+          "challenge": "Preflight inspection",
+          "expected": "COMPLETE",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-2",
+          "challenge": "Seats, seat belts, and shoulder harnesses",
+          "expected": "ADJUST AND LOCK",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-3",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-4",
+          "challenge": "Avionics, autopilot, and electrical equipment",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-5",
+          "challenge": "Brakes",
+          "expected": "TEST AND SET",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-6",
+          "challenge": "Cowl flaps",
+          "expected": "OPEN",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-7",
+          "challenge": "Landing gear lever",
+          "expected": "DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "before-start-8",
+          "challenge": "Circuit breakers",
+          "expected": "CHECK IN",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "starting-engine",
+      "name": "STARTING ENGINE",
+      "category": "normal",
+      "group": "Ground operations",
+      "sourcePage": "4-7",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "starting-engine-1",
+          "challenge": "Mixture",
+          "expected": "RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-2",
+          "challenge": "Propeller",
+          "expected": "HIGH RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-3",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-4",
+          "challenge": "Throttle",
+          "expected": "PUMP AS REQUIRED AND OPEN ONE QUARTER INCH",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-5",
+          "challenge": "Master switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-6",
+          "challenge": "Propeller area",
+          "expected": "CLEAR",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-7",
+          "challenge": "Ignition switch",
+          "expected": "START",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-8",
+          "challenge": "Oil pressure",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-9",
+          "challenge": "Beacon and navigation lights",
+          "expected": "ON AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-10",
+          "challenge": "Avionics power switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "starting-engine-11",
+          "challenge": "Radios",
+          "expected": "ON",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "taxi",
+      "name": "TAXI",
+      "category": "normal",
+      "group": "Ground operations",
+      "sourcePage": "4-13 to 4-14",
+      "sourceKind": "poh-amplified",
+      "triggerPhase": "TAXI",
+      "items": [
+        {
+          "id": "taxi-1",
+          "challenge": "Taxi speed and braking",
+          "expected": "MINIMUM REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "taxi-2",
+          "challenge": "Flight controls",
+          "expected": "POSITION FOR WIND",
+          "validator": "exact"
+        },
+        {
+          "id": "taxi-3",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "taxi-4",
+          "challenge": "Loose gravel or cinders",
+          "expected": "USE LOW ENGINE SPEED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "engine-run-up",
+      "name": "ENGINE RUN-UP",
+      "category": "normal",
+      "group": "Ground operations",
+      "sourcePage": "4-7 to 4-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "engine-run-up-1",
+          "challenge": "Parking brake",
+          "expected": "SET",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-2",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-3",
+          "challenge": "Mixture",
+          "expected": "RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-4",
+          "challenge": "Throttle",
+          "expected": "1700 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-5",
+          "challenge": "Magnetos",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-6",
+          "challenge": "Propeller",
+          "expected": "CYCLE AND HIGH RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-7",
+          "challenge": "Carburetor heat",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-8",
+          "challenge": "Engine instruments and ammeter",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-9",
+          "challenge": "Suction gage",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-run-up-10",
+          "challenge": "Throttle",
+          "expected": "800 TO 1000 RPM",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "night-operations",
+      "name": "NIGHT OPERATIONS",
+      "category": "normal",
+      "group": "Night supplement",
+      "sourcePage": "4-4 note · pilot review",
+      "sourceKind": "prototype-supplement",
+      "appliesTo": "night",
+      "items": [
+        {
+          "id": "night-operations-1",
+          "challenge": "Exterior and interior lights",
+          "expected": "CHECK OPERATION",
+          "validator": "exact"
+        },
+        {
+          "id": "night-operations-2",
+          "challenge": "Flashlight",
+          "expected": "AVAILABLE",
+          "validator": "exact"
+        },
+        {
+          "id": "night-operations-3",
+          "challenge": "Pitot heat if installed",
+          "expected": "CHECK WARM",
+          "validator": "exact"
+        },
+        {
+          "id": "night-operations-4",
+          "challenge": "Beacon and navigation lights",
+          "expected": "ON AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "night-operations-5",
+          "challenge": "Instrument and panel lighting",
+          "expected": "SET AND DIMMED",
+          "validator": "exact"
+        },
+        {
+          "id": "night-operations-6",
+          "challenge": "Taxi and landing lights",
+          "expected": "ON AS REQUIRED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "before-takeoff",
+      "name": "BEFORE TAKEOFF",
+      "category": "normal",
+      "group": "Ground operations",
+      "sourcePage": "4-7 to 4-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "before-takeoff-1",
+          "challenge": "Cabin doors and windows",
+          "expected": "CLOSED AND LOCKED",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-2",
+          "challenge": "Parking brake",
+          "expected": "SET",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-3",
+          "challenge": "Seats, seat belts, and shoulder harnesses",
+          "expected": "SECURE",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-4",
+          "challenge": "Flight controls",
+          "expected": "FREE AND CORRECT",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-5",
+          "challenge": "Flight instruments",
+          "expected": "SET",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-6",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-7",
+          "challenge": "Mixture",
+          "expected": "RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-8",
+          "challenge": "Auxiliary fuel pump",
+          "expected": "CHECK THEN OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-9",
+          "challenge": "Elevator and rudder trim",
+          "expected": "TAKEOFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-10",
+          "challenge": "Radios",
+          "expected": "SET",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-11",
+          "challenge": "Electric trim if installed",
+          "expected": "PREFLIGHT TEST",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-12",
+          "challenge": "Autopilot if installed",
+          "expected": "PREFLIGHT TEST THEN OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-13",
+          "challenge": "Air conditioner if installed",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-14",
+          "challenge": "Strobe lights if installed",
+          "expected": "AS DESIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-15",
+          "challenge": "Throttle friction lock",
+          "expected": "ADJUST",
+          "validator": "exact"
+        },
+        {
+          "id": "before-takeoff-16",
+          "challenge": "Parking brake",
+          "expected": "RELEASE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "normal-takeoff",
+      "name": "NORMAL TAKEOFF",
+      "category": "normal",
+      "group": "Takeoff",
+      "sourcePage": "4-8",
+      "triggerPhase": "TAKEOFF",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "normal-takeoff-1",
+          "challenge": "Wing flaps",
+          "expected": "ZERO TO TWENTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-2",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-3",
+          "challenge": "Power",
+          "expected": "FULL THROTTLE AND 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-4",
+          "challenge": "Elevator control",
+          "expected": "LIFT NOSE WHEEL AT 50 KIAS",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-5",
+          "challenge": "Climb speed",
+          "expected": "70 KIAS FLAPS TWENTY OR 80 KIAS FLAPS UP",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-6",
+          "challenge": "Brakes",
+          "expected": "APPLY MOMENTARILY",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-7",
+          "challenge": "Landing gear",
+          "expected": "RETRACT IN CLIMB OUT",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-takeoff-8",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "short-field-takeoff",
+      "name": "SHORT FIELD TAKEOFF",
+      "category": "normal",
+      "group": "Takeoff",
+      "sourcePage": "4-9",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "short-field-takeoff-1",
+          "challenge": "Wing flaps",
+          "expected": "TWENTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-2",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-3",
+          "challenge": "Brakes",
+          "expected": "APPLY",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-4",
+          "challenge": "Power",
+          "expected": "FULL THROTTLE AND 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-5",
+          "challenge": "Brakes",
+          "expected": "RELEASE",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-6",
+          "challenge": "Elevator control",
+          "expected": "MAINTAIN SLIGHTLY TAIL LOW ATTITUDE",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-7",
+          "challenge": "Climb speed",
+          "expected": "59 KIAS UNTIL CLEAR",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-8",
+          "challenge": "Landing gear",
+          "expected": "RETRACT AFTER OBSTACLES",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-takeoff-9",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT SLOWLY ABOVE 70 KIAS",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "climb",
+      "name": "ENROUTE CLIMB",
+      "category": "normal",
+      "group": "Climb",
+      "sourcePage": "4-9",
+      "triggerPhase": "CLIMB",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "climb-1",
+          "challenge": "Airspeed",
+          "expected": "90 TO 100 KIAS",
+          "validator": "range",
+          "min": 90,
+          "max": 100
+        },
+        {
+          "id": "climb-2",
+          "challenge": "Power",
+          "expected": "23 INCHES AND 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "climb-3",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "climb-4",
+          "challenge": "Mixture",
+          "expected": "FULL RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "climb-5",
+          "challenge": "Cowl flaps",
+          "expected": "OPEN AS REQUIRED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "maximum-climb",
+      "name": "MAXIMUM PERFORMANCE CLIMB",
+      "category": "normal",
+      "group": "Climb",
+      "sourcePage": "4-9",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "maximum-climb-1",
+          "challenge": "Airspeed",
+          "expected": "88 KIAS SEA LEVEL TO 75 KIAS AT 10000 FEET",
+          "validator": "exact"
+        },
+        {
+          "id": "maximum-climb-2",
+          "challenge": "Power",
+          "expected": "FULL THROTTLE AND 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "maximum-climb-3",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "maximum-climb-4",
+          "challenge": "Mixture",
+          "expected": "FULL RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "maximum-climb-5",
+          "challenge": "Cowl flaps",
+          "expected": "FULL OPEN",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "cruise",
+      "name": "CRUISE",
+      "category": "normal",
+      "group": "Enroute",
+      "sourcePage": "4-9",
+      "triggerPhase": "CRUISE",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "cruise-1",
+          "challenge": "Power",
+          "expected": "15 TO 23 INCHES AND 2100 TO 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "cruise-2",
+          "challenge": "Elevator and rudder trim",
+          "expected": "ADJUST",
+          "validator": "exact"
+        },
+        {
+          "id": "cruise-3",
+          "challenge": "Mixture",
+          "expected": "LEAN",
+          "validator": "exact"
+        },
+        {
+          "id": "cruise-4",
+          "challenge": "Cowl flaps",
+          "expected": "CLOSED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "descent",
+      "name": "DESCENT",
+      "category": "normal",
+      "group": "Arrival",
+      "sourcePage": "4-9 to 4-10",
+      "triggerPhase": "DESCENT",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "descent-1",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "descent-2",
+          "challenge": "Power",
+          "expected": "AS DESIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "descent-3",
+          "challenge": "Carburetor heat",
+          "expected": "AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "descent-4",
+          "challenge": "Mixture",
+          "expected": "ENRICHEN AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "descent-5",
+          "challenge": "Cowl flaps",
+          "expected": "CLOSED",
+          "validator": "exact"
+        },
+        {
+          "id": "descent-6",
+          "challenge": "Wing flaps",
+          "expected": "AS DESIRED WITHIN SPEED LIMITS",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "before-landing",
+      "name": "BEFORE LANDING",
+      "category": "normal",
+      "group": "Arrival",
+      "sourcePage": "4-10",
+      "triggerPhase": "APPROACH",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "before-landing-1",
+          "challenge": "Seats, seat belts, and shoulder harnesses",
+          "expected": "ADJUST AND LOCK",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-2",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-3",
+          "challenge": "Landing gear",
+          "expected": "DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-4",
+          "challenge": "Landing gear indication",
+          "expected": "MAIN GEAR DOWN AND GREEN LIGHT",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-5",
+          "challenge": "Mixture",
+          "expected": "RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-6",
+          "challenge": "Carburetor heat",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-7",
+          "challenge": "Propeller",
+          "expected": "HIGH RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-8",
+          "challenge": "Autopilot if installed",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "before-landing-9",
+          "challenge": "Air conditioner if installed",
+          "expected": "OFF",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "normal-landing",
+      "name": "NORMAL LANDING",
+      "category": "normal",
+      "group": "Landing",
+      "sourcePage": "4-10",
+      "sourceKind": "poh-checklist",
+      "triggerPhase": "LANDING",
+      "items": [
+        {
+          "id": "normal-landing-1",
+          "challenge": "Airspeed flaps up",
+          "expected": "70 TO 80 KIAS",
+          "validator": "range",
+          "min": 70,
+          "max": 80
+        },
+        {
+          "id": "normal-landing-2",
+          "challenge": "Wing flaps",
+          "expected": "AS DESIRED WITHIN SPEED LIMITS",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-landing-3",
+          "challenge": "Airspeed flaps down",
+          "expected": "65 TO 75 KIAS",
+          "validator": "range",
+          "min": 65,
+          "max": 75
+        },
+        {
+          "id": "normal-landing-4",
+          "challenge": "Trim",
+          "expected": "ADJUST",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-landing-5",
+          "challenge": "Touchdown",
+          "expected": "MAIN WHEELS FIRST",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-landing-6",
+          "challenge": "Landing roll",
+          "expected": "LOWER NOSE WHEEL GENTLY",
+          "validator": "exact"
+        },
+        {
+          "id": "normal-landing-7",
+          "challenge": "Braking",
+          "expected": "MINIMUM REQUIRED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "short-field-landing",
+      "name": "SHORT FIELD LANDING",
+      "category": "normal",
+      "group": "Landing",
+      "sourcePage": "4-10",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "short-field-landing-1",
+          "challenge": "Airspeed flaps up",
+          "expected": "70 TO 80 KIAS",
+          "validator": "range",
+          "min": 70,
+          "max": 80
+        },
+        {
+          "id": "short-field-landing-2",
+          "challenge": "Wing flaps",
+          "expected": "FORTY DEGREES BELOW 95 KIAS",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-landing-3",
+          "challenge": "Final airspeed",
+          "expected": "64 KIAS",
+          "validator": "range",
+          "min": 64,
+          "max": 64
+        },
+        {
+          "id": "short-field-landing-4",
+          "challenge": "Trim",
+          "expected": "ADJUST",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-landing-5",
+          "challenge": "Power",
+          "expected": "IDLE AS OBSTACLE IS CLEARED",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-landing-6",
+          "challenge": "Touchdown",
+          "expected": "MAIN WHEELS FIRST",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-landing-7",
+          "challenge": "Brakes",
+          "expected": "APPLY HEAVILY",
+          "validator": "exact"
+        },
+        {
+          "id": "short-field-landing-8",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "balked-landing",
+      "name": "BALKED LANDING",
+      "category": "normal",
+      "group": "Landing",
+      "sourcePage": "4-11",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "balked-landing-1",
+          "challenge": "Power",
+          "expected": "FULL THROTTLE AND 2400 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "balked-landing-2",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "balked-landing-3",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT TO TWENTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "balked-landing-4",
+          "challenge": "Climb speed",
+          "expected": "75 KIAS",
+          "validator": "range",
+          "min": 75,
+          "max": 75
+        },
+        {
+          "id": "balked-landing-5",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT SLOWLY",
+          "validator": "exact"
+        },
+        {
+          "id": "balked-landing-6",
+          "challenge": "Cowl flaps",
+          "expected": "OPEN",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "after-landing",
+      "name": "AFTER LANDING",
+      "category": "normal",
+      "group": "Postflight",
+      "sourcePage": "4-11",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "after-landing-1",
+          "challenge": "Wing flaps",
+          "expected": "UP",
+          "validator": "exact"
+        },
+        {
+          "id": "after-landing-2",
+          "challenge": "Carburetor heat",
+          "expected": "COLD",
+          "validator": "exact"
+        },
+        {
+          "id": "after-landing-3",
+          "challenge": "Cowl flaps",
+          "expected": "OPEN",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "securing-airplane",
+      "name": "SECURING AIRPLANE",
+      "category": "normal",
+      "group": "Postflight",
+      "sourcePage": "4-11",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "securing-airplane-1",
+          "challenge": "Parking brake",
+          "expected": "SET",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-2",
+          "challenge": "Throttle",
+          "expected": "IDLE",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-3",
+          "challenge": "Avionics and electrical equipment",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-4",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-5",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-6",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-7",
+          "challenge": "Control lock",
+          "expected": "INSTALL",
+          "validator": "exact"
+        },
+        {
+          "id": "securing-airplane-8",
+          "challenge": "Fuel selector valve",
+          "expected": "RIGHT",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "engine-failure-takeoff-run",
+      "name": "ENGINE FAILURE · TAKEOFF RUN",
+      "category": "emergency",
+      "group": "Engine failures",
+      "sourcePage": "3-3",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "engine-failure-takeoff-run-1",
+          "challenge": "Throttle",
+          "expected": "IDLE",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-takeoff-run-2",
+          "challenge": "Brakes",
+          "expected": "APPLY",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-takeoff-run-3",
+          "challenge": "Wing flaps",
+          "expected": "RETRACT",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-takeoff-run-4",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-takeoff-run-5",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-takeoff-run-6",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "engine-failure-after-takeoff",
+      "name": "ENGINE FAILURE · AFTER TAKEOFF",
+      "category": "emergency",
+      "group": "Engine failures",
+      "sourcePage": "3-4",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "engine-failure-after-takeoff-1",
+          "challenge": "Airspeed",
+          "expected": "70 KIAS FLAPS UP OR 65 KIAS FLAPS DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-after-takeoff-2",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-after-takeoff-3",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-after-takeoff-4",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-after-takeoff-5",
+          "challenge": "Wing flaps",
+          "expected": "AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-after-takeoff-6",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "engine-failure-flight",
+      "name": "ENGINE FAILURE · IN FLIGHT",
+      "category": "emergency",
+      "group": "Engine failures",
+      "sourcePage": "3-4",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "engine-failure-flight-1",
+          "challenge": "Airspeed",
+          "expected": "80 KIAS",
+          "validator": "range",
+          "min": 80,
+          "max": 80
+        },
+        {
+          "id": "engine-failure-flight-2",
+          "challenge": "Carburetor heat",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-flight-3",
+          "challenge": "Fuel selector valve",
+          "expected": "BOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-flight-4",
+          "challenge": "Mixture",
+          "expected": "RICH",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-flight-5",
+          "challenge": "Ignition switch",
+          "expected": "BOTH OR START",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-failure-flight-6",
+          "challenge": "Primer",
+          "expected": "IN AND LOCKED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "forced-landing-no-power",
+      "name": "EMERGENCY LANDING · NO POWER",
+      "category": "emergency",
+      "group": "Forced landings",
+      "sourcePage": "3-4",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "forced-landing-no-power-1",
+          "challenge": "Airspeed",
+          "expected": "70 KIAS FLAPS UP OR 65 KIAS FLAPS DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-2",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-3",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-4",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-5",
+          "challenge": "Landing gear",
+          "expected": "DOWN OR UP FOR ROUGH OR SOFT TERRAIN",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-6",
+          "challenge": "Wing flaps",
+          "expected": "AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-7",
+          "challenge": "Doors",
+          "expected": "UNLATCH BEFORE TOUCHDOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-8",
+          "challenge": "Master switch",
+          "expected": "OFF WHEN LANDING ASSURED",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-9",
+          "challenge": "Touchdown",
+          "expected": "SLIGHTLY TAIL LOW",
+          "validator": "exact"
+        },
+        {
+          "id": "forced-landing-no-power-10",
+          "challenge": "Brakes",
+          "expected": "APPLY HEAVILY",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "precautionary-landing",
+      "name": "PRECAUTIONARY LANDING · WITH POWER",
+      "category": "emergency",
+      "group": "Forced landings",
+      "sourcePage": "3-4 to 3-5",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "precautionary-landing-1",
+          "challenge": "Airspeed",
+          "expected": "65 KIAS",
+          "validator": "range",
+          "min": 65,
+          "max": 65
+        },
+        {
+          "id": "precautionary-landing-2",
+          "challenge": "Wing flaps",
+          "expected": "TWENTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-3",
+          "challenge": "Selected field",
+          "expected": "FLY OVER AND INSPECT",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-4",
+          "challenge": "Electrical switches",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-5",
+          "challenge": "Landing gear",
+          "expected": "DOWN OR UP FOR ROUGH OR SOFT TERRAIN",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-6",
+          "challenge": "Final wing flaps",
+          "expected": "FORTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-7",
+          "challenge": "Final airspeed",
+          "expected": "65 KIAS",
+          "validator": "range",
+          "min": 65,
+          "max": 65
+        },
+        {
+          "id": "precautionary-landing-8",
+          "challenge": "Doors",
+          "expected": "UNLATCH BEFORE TOUCHDOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-9",
+          "challenge": "Avionics power and master switches",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-10",
+          "challenge": "Touchdown",
+          "expected": "SLIGHTLY TAIL LOW",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-11",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "precautionary-landing-12",
+          "challenge": "Brakes",
+          "expected": "APPLY HEAVILY",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "ditching",
+      "name": "DITCHING",
+      "category": "emergency",
+      "group": "Forced landings",
+      "sourcePage": "3-5",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "ditching-1",
+          "challenge": "Radio and transponder",
+          "expected": "MAYDAY 121.5 AND SQUAWK 7700",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-2",
+          "challenge": "Heavy objects",
+          "expected": "SECURE OR JETTISON",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-3",
+          "challenge": "Landing gear",
+          "expected": "UP",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-4",
+          "challenge": "Wing flaps",
+          "expected": "TWENTY TO FORTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-5",
+          "challenge": "Powered descent",
+          "expected": "300 FPM AT 60 KIAS",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-6",
+          "challenge": "Approach",
+          "expected": "INTO WIND OR PARALLEL TO SWELLS",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-7",
+          "challenge": "Cabin doors",
+          "expected": "UNLATCH",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-8",
+          "challenge": "Touchdown",
+          "expected": "LEVEL ATTITUDE",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-9",
+          "challenge": "Face",
+          "expected": "CUSHION AT TOUCHDOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-10",
+          "challenge": "Airplane",
+          "expected": "EVACUATE",
+          "validator": "exact"
+        },
+        {
+          "id": "ditching-11",
+          "challenge": "Life vests and raft",
+          "expected": "INFLATE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "fire-start",
+      "name": "FIRE · DURING START ON GROUND",
+      "category": "emergency",
+      "group": "Fires",
+      "sourcePage": "3-5 to 3-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "fire-start-1",
+          "challenge": "Cranking",
+          "expected": "CONTINUE",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-2",
+          "challenge": "If engine starts, power",
+          "expected": "1700 RPM",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-3",
+          "challenge": "If engine starts, engine",
+          "expected": "SHUTDOWN AND INSPECT",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-4",
+          "challenge": "If engine fails to start, throttle",
+          "expected": "FULL OPEN",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-5",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-6",
+          "challenge": "Cranking",
+          "expected": "CONTINUE",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-7",
+          "challenge": "Fire extinguisher",
+          "expected": "OBTAIN",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-8",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-9",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-10",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-11",
+          "challenge": "Fire",
+          "expected": "EXTINGUISH",
+          "validator": "exact"
+        },
+        {
+          "id": "fire-start-12",
+          "challenge": "Fire damage",
+          "expected": "INSPECT AND REPAIR",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "engine-fire-flight",
+      "name": "ENGINE FIRE · IN FLIGHT",
+      "category": "emergency",
+      "group": "Fires",
+      "sourcePage": "3-6",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "engine-fire-flight-1",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-fire-flight-2",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-fire-flight-3",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-fire-flight-4",
+          "challenge": "Cabin heat and air",
+          "expected": "OFF EXCEPT OVERHEAD VENTS",
+          "validator": "exact"
+        },
+        {
+          "id": "engine-fire-flight-5",
+          "challenge": "Airspeed",
+          "expected": "100 KIAS",
+          "validator": "range",
+          "min": 100,
+          "max": 100
+        },
+        {
+          "id": "engine-fire-flight-6",
+          "challenge": "Forced landing",
+          "expected": "EXECUTE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "electrical-fire-flight",
+      "name": "ELECTRICAL FIRE · IN FLIGHT",
+      "category": "emergency",
+      "group": "Fires",
+      "sourcePage": "3-6 to 3-7",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "electrical-fire-flight-1",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-2",
+          "challenge": "Avionics power switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-3",
+          "challenge": "Other switches except ignition",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-4",
+          "challenge": "Vents, cabin air, and heat",
+          "expected": "CLOSED",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-5",
+          "challenge": "Fire extinguisher",
+          "expected": "ACTIVATE",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-6",
+          "challenge": "If power is necessary, master switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-7",
+          "challenge": "Circuit breakers",
+          "expected": "CHECK AND DO NOT RESET",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-8",
+          "challenge": "Radio switches",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-9",
+          "challenge": "Avionics power switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-10",
+          "challenge": "Radio and electrical switches",
+          "expected": "ON ONE AT A TIME",
+          "validator": "exact"
+        },
+        {
+          "id": "electrical-fire-flight-11",
+          "challenge": "After fire is extinguished, vents, cabin air, and heat",
+          "expected": "OPEN",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "cabin-fire",
+      "name": "CABIN FIRE",
+      "category": "emergency",
+      "group": "Fires",
+      "sourcePage": "3-7",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "cabin-fire-1",
+          "challenge": "Master switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "cabin-fire-2",
+          "challenge": "Vents, cabin air, and heat",
+          "expected": "CLOSED",
+          "validator": "exact"
+        },
+        {
+          "id": "cabin-fire-3",
+          "challenge": "Fire extinguisher",
+          "expected": "ACTIVATE",
+          "validator": "exact"
+        },
+        {
+          "id": "cabin-fire-4",
+          "challenge": "Landing",
+          "expected": "AS SOON AS POSSIBLE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "wing-fire",
+      "name": "WING FIRE",
+      "category": "emergency",
+      "group": "Fires",
+      "sourcePage": "3-7",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "wing-fire-1",
+          "challenge": "Navigation light switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "wing-fire-2",
+          "challenge": "Strobe light switch if installed",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "wing-fire-3",
+          "challenge": "Pitot heat switch if installed",
+          "expected": "OFF",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "icing",
+      "name": "INADVERTENT ICING ENCOUNTER",
+      "category": "emergency",
+      "group": "Weather and instruments",
+      "sourcePage": "3-7 to 3-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "icing-1",
+          "challenge": "Pitot heat switch if installed",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-2",
+          "challenge": "Course or altitude",
+          "expected": "CHANGE TO LEAVE ICING",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-3",
+          "challenge": "Cabin heat and defroster",
+          "expected": "MAXIMUM",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-4",
+          "challenge": "Engine speed",
+          "expected": "INCREASE",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-5",
+          "challenge": "Carburetor heat",
+          "expected": "AS REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-6",
+          "challenge": "Landing plan",
+          "expected": "NEAREST SUITABLE SITE",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-7",
+          "challenge": "Stall speed",
+          "expected": "EXPECT HIGHER",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-8",
+          "challenge": "Wing flaps",
+          "expected": "RETRACTED",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-9",
+          "challenge": "Windshield visibility",
+          "expected": "OPEN WINDOW AND CLEAR IF PRACTICAL",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-10",
+          "challenge": "Approach",
+          "expected": "FORWARD SLIP IF REQUIRED",
+          "validator": "exact"
+        },
+        {
+          "id": "icing-11",
+          "challenge": "Approach airspeed",
+          "expected": "85 TO 95 KIAS",
+          "validator": "range",
+          "min": 85,
+          "max": 95
+        },
+        {
+          "id": "icing-12",
+          "challenge": "Landing attitude",
+          "expected": "LEVEL",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "static-blockage",
+      "name": "STATIC SOURCE BLOCKAGE",
+      "category": "emergency",
+      "group": "Weather and instruments",
+      "sourcePage": "3-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "static-blockage-1",
+          "challenge": "Alternate static source valve",
+          "expected": "PULL ON",
+          "validator": "exact"
+        },
+        {
+          "id": "static-blockage-2",
+          "challenge": "Airspeed",
+          "expected": "CONSULT SECTION FIVE TABLE",
+          "validator": "exact"
+        },
+        {
+          "id": "static-blockage-3",
+          "challenge": "Cruise altitude correction",
+          "expected": "FIFTY FEET HIGHER",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "gear-fails-retract",
+      "name": "LANDING GEAR FAILS TO RETRACT",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "gear-fails-retract-1",
+          "challenge": "Master switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-retract-2",
+          "challenge": "Landing gear lever",
+          "expected": "CHECK FULL UP",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-retract-3",
+          "challenge": "Gear circuit breakers",
+          "expected": "IN",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-retract-4",
+          "challenge": "Gear up light",
+          "expected": "CHECK",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-retract-5",
+          "challenge": "Landing gear lever",
+          "expected": "RECYCLE",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-retract-6",
+          "challenge": "Gear motor",
+          "expected": "CHECK OPERATION",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "gear-fails-extend",
+      "name": "LANDING GEAR FAILS TO EXTEND",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-8",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "gear-fails-extend-1",
+          "challenge": "Landing gear lever",
+          "expected": "DOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-extend-2",
+          "challenge": "Emergency hand pump",
+          "expected": "EXTEND AND PUMP UNTIL HEAVY RESISTANCE",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-extend-3",
+          "challenge": "Gear down light",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-fails-extend-4",
+          "challenge": "Pump handle",
+          "expected": "STOW",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "gear-up-landing",
+      "name": "GEAR UP LANDING",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-9",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "gear-up-landing-1",
+          "challenge": "Landing gear lever",
+          "expected": "UP",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-2",
+          "challenge": "Gear circuit breakers",
+          "expected": "IN",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-3",
+          "challenge": "Runway",
+          "expected": "LONGEST HARD OR SMOOTH SOD",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-4",
+          "challenge": "Wing flaps",
+          "expected": "FORTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-5",
+          "challenge": "Airspeed",
+          "expected": "65 KIAS",
+          "validator": "range",
+          "min": 65,
+          "max": 65
+        },
+        {
+          "id": "gear-up-landing-6",
+          "challenge": "Doors",
+          "expected": "UNLATCH BEFORE TOUCHDOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-7",
+          "challenge": "Avionics and master switches",
+          "expected": "OFF WHEN LANDING ASSURED",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-8",
+          "challenge": "Touchdown",
+          "expected": "SLIGHTLY TAIL LOW",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-9",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-10",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-11",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-up-landing-12",
+          "challenge": "Airplane",
+          "expected": "EVACUATE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "gear-no-positive-lock",
+      "name": "NO POSITIVE GEAR LOCK INDICATION",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-9",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "gear-no-positive-lock-1",
+          "challenge": "Before landing check",
+          "expected": "COMPLETE",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-2",
+          "challenge": "Approach",
+          "expected": "NORMAL FULL FLAP",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-3",
+          "challenge": "Gear circuit breakers",
+          "expected": "IN",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-4",
+          "challenge": "Landing",
+          "expected": "TAIL LOW AND SMOOTH",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-5",
+          "challenge": "Braking",
+          "expected": "MINIMUM NECESSARY",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-6",
+          "challenge": "Taxi",
+          "expected": "SLOWLY",
+          "validator": "exact"
+        },
+        {
+          "id": "gear-no-positive-lock-7",
+          "challenge": "Engine",
+          "expected": "SHUTDOWN BEFORE INSPECTION",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "defective-nose-gear",
+      "name": "DEFECTIVE NOSE GEAR OR FLAT NOSE TIRE",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-9",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "defective-nose-gear-1",
+          "challenge": "Movable load",
+          "expected": "TRANSFER TO BAGGAGE AREA",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-2",
+          "challenge": "Passenger",
+          "expected": "MOVE TO REAR SEAT",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-3",
+          "challenge": "Before landing checklist",
+          "expected": "COMPLETE",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-4",
+          "challenge": "Runway",
+          "expected": "HARD SURFACE OR SMOOTH SOD",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-5",
+          "challenge": "Wing flaps",
+          "expected": "FORTY DEGREES",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-6",
+          "challenge": "Cabin doors",
+          "expected": "UNLATCH BEFORE TOUCHDOWN",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-7",
+          "challenge": "Avionics and master switches",
+          "expected": "OFF WHEN LANDING ASSURED",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-8",
+          "challenge": "Landing",
+          "expected": "SLIGHTLY TAIL LOW",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-9",
+          "challenge": "Mixture",
+          "expected": "IDLE CUT OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-10",
+          "challenge": "Ignition switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-11",
+          "challenge": "Fuel selector valve",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-12",
+          "challenge": "Elevator control",
+          "expected": "HOLD NOSE OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "defective-nose-gear-13",
+          "challenge": "Airplane",
+          "expected": "EVACUATE",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "flat-main-tire",
+      "name": "FLAT MAIN TIRE LANDING",
+      "category": "emergency",
+      "group": "Landing gear",
+      "sourcePage": "3-10",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "flat-main-tire-1",
+          "challenge": "Approach",
+          "expected": "NORMAL FULL FLAP",
+          "validator": "exact"
+        },
+        {
+          "id": "flat-main-tire-2",
+          "challenge": "Touchdown",
+          "expected": "GOOD TIRE FIRST",
+          "validator": "exact"
+        },
+        {
+          "id": "flat-main-tire-3",
+          "challenge": "Directional control",
+          "expected": "BRAKE GOOD WHEEL AS REQUIRED",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "excessive-charge",
+      "name": "EXCESSIVE CHARGE RATE",
+      "category": "emergency",
+      "group": "Electrical power",
+      "sourcePage": "3-10",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "excessive-charge-1",
+          "challenge": "Alternator",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "excessive-charge-2",
+          "challenge": "Alternator circuit breaker",
+          "expected": "PULL",
+          "validator": "exact"
+        },
+        {
+          "id": "excessive-charge-3",
+          "challenge": "Nonessential electrical equipment",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "excessive-charge-4",
+          "challenge": "Flight",
+          "expected": "TERMINATE AS SOON AS PRACTICAL",
+          "validator": "exact"
+        }
+      ]
+    },
+    {
+      "id": "low-voltage",
+      "name": "LOW-VOLTAGE LIGHT IN FLIGHT",
+      "category": "emergency",
+      "group": "Electrical power",
+      "sourcePage": "3-10",
+      "sourceKind": "poh-checklist",
+      "items": [
+        {
+          "id": "low-voltage-1",
+          "challenge": "Avionics power switch",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-2",
+          "challenge": "Alternator circuit breaker",
+          "expected": "CHECK IN",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-3",
+          "challenge": "Master switch",
+          "expected": "OFF BOTH SIDES",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-4",
+          "challenge": "Master switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-5",
+          "challenge": "Low-voltage light",
+          "expected": "CHECK OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-6",
+          "challenge": "Avionics power switch",
+          "expected": "ON",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-7",
+          "challenge": "If light returns, alternator",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-8",
+          "challenge": "Nonessential radio and electrical equipment",
+          "expected": "OFF",
+          "validator": "exact"
+        },
+        {
+          "id": "low-voltage-9",
+          "challenge": "Flight",
+          "expected": "TERMINATE AS SOON AS PRACTICAL",
+          "validator": "exact"
+        }
+      ]
+    }
+  ]
+}
