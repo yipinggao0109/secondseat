@@ -67,6 +67,7 @@ const HOLD_SHORT_PROMPT = 'Hold short. Run-up, or ready for takeoff?';
 let activeVoiceAudio: HTMLAudioElement | null = null;
 let cancelActiveRecognition: (() => void) | null = null;
 let useBrowserVoice = false;
+let browserSpeechRequest = 0;
 const generatedVoiceAssets = new Map<string, string>();
 const VOICE_ASSET_STORAGE_KEY = 'secondseat.kokoro-assets.v2';
 function currentGeneratedAsset(asset: string) {
@@ -116,12 +117,25 @@ function isHostedPrototype() {
 
 function stopSpeech() {
   if (typeof window === 'undefined') return;
+  browserSpeechRequest += 1;
   if (activeVoiceAudio) {
     activeVoiceAudio.pause();
     activeVoiceAudio.currentTime = 0;
     activeVoiceAudio = null;
   }
   window.speechSynthesis?.cancel();
+}
+
+function preferredBrowserVoice() {
+  const voices = window.speechSynthesis?.getVoices() ?? [];
+  const preferredNames = [/samantha/i, /ava/i, /allison/i, /google us english/i, /victoria/i, /karen/i, /moira/i];
+  for (const name of preferredNames) {
+    const match = voices.find((voice) => voice.lang.startsWith('en-US') && name.test(voice.name));
+    if (match) return match;
+  }
+  return voices.find((voice) => voice.lang.startsWith('en-US') && !/alex|fred|daniel|aaron|tom|ralph/i.test(voice.name))
+    ?? voices.find((voice) => voice.lang.startsWith('en-US'))
+    ?? null;
 }
 
 function stopListening() {
@@ -134,17 +148,30 @@ function speak(text: string, onEnd?: () => void) {
   stopListening();
   stopSpeech();
   if (useBrowserVoice) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = window.speechSynthesis?.getVoices() ?? [];
-    utterance.voice = voices.find((voice) => voice.lang === 'en-US' && /samantha|ava|allison|google us english/i.test(voice.name))
-      ?? voices.find((voice) => voice.lang === 'en-US')
-      ?? null;
-    utterance.lang = 'en-US';
-    utterance.rate = 0.94;
-    utterance.pitch = 0.96;
-    utterance.onend = () => onEnd?.();
-    utterance.onerror = () => onEnd?.();
-    window.speechSynthesis?.speak(utterance);
+    const request = ++browserSpeechRequest;
+    const play = () => {
+      if (request !== browserSpeechRequest) return;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = preferredBrowserVoice();
+      utterance.lang = 'en-US';
+      utterance.rate = 0.94;
+      utterance.pitch = 1.02;
+      utterance.onend = () => onEnd?.();
+      utterance.onerror = () => onEnd?.();
+      window.speechSynthesis?.speak(utterance);
+    };
+    if ((window.speechSynthesis?.getVoices() ?? []).length) {
+      play();
+    } else {
+      let started = false;
+      const playOnce = () => {
+        if (started) return;
+        started = true;
+        play();
+      };
+      window.speechSynthesis?.addEventListener('voiceschanged', playOnce, { once: true });
+      window.setTimeout(playOnce, 500);
+    }
     return;
   }
   const asset = voiceAssetFor(text);
